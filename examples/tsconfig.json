@@ -37,10 +37,10 @@
         ],
         "baseUrl": ".",
         "paths": {
-            "@/*": ["packages/*"]
+            "@/*": ["src/*"]
         }
     },
-    "include": ["packages", "examples", "**/*.d.ts"],
+    "include": ["examples"],
     "exclude": ["node_modules"],
-    "references": [{ "path": "./tsconfig.node.json" }]
+    "references": [{ "path": "../tsconfig.json" }]
 }

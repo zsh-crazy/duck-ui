@@ -3,20 +3,20 @@ import { UserConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import vitePluginTransformFilterCssModule from 'vite-plugin-filter-css-moudle';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
-import dts from 'vite-plugin-dts';
 // https://vitejs.dev/config/
 export default <UserConfig>{
     resolve: {
-        extensions: ['.ts', '.tsx', '.json', 'js'],
-        alias: [
-            { find: '@', replacement: resolve(__dirname, '..', './packages') }
-        ]
+        alias: {
+            '@': resolve(__dirname, '..', 'src')
+        },
+        extensions: ['.ts', '.tsx', '.json', 'js']
     },
+
     css: {
         preprocessorOptions: {
             scss: {
                 charset: false,
-                additionalData: '@import "@/styles/variables.scss";'
+                additionalData: `@use "@/styles/mixin.scss" as *;@import "@/styles/variables.scss";`
             }
         }
     },
@@ -39,12 +39,6 @@ export default <UserConfig>{
         }),
         vitePluginTransformFilterCssModule([
             {
-                test: /src\/components\/([a-z-]+\/)*[a-z-]+\.s[ac]ss$/i,
-                modules: {
-                    generateScopedName: 'kf_[local]'
-                }
-            },
-            {
                 test: /\.s[ac]ss$/i,
                 modules: {
                     generateScopedName: '[path]___[local]___[hash:base64:5]'
@@ -61,29 +55,6 @@ export default <UserConfig>{
              * @default: body-last
              */
             inject: 'body-first' //'body-last' | 'body-first'
-        }),
-        dts({
-            outputDir: 'dist/types'
         })
-    ],
-    build: {
-        target: 'es2015',
-        emptyOutDir: false,
-        outDir: 'dist',
-        cssCodeSplit: false,
-        rollupOptions: {
-            output: {
-                globals: {
-                    react: 'React',
-                    'react-dom': 'ReactDOM'
-                }
-            },
-            external: ['react', 'react-dom']
-        },
-        lib: {
-            entry: resolve(__dirname, '..', 'packages/index.ts'),
-            name: 'index',
-            fileName: (format) => `index.${format}.js`
-        }
-    }
+    ]
 };
