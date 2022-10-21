@@ -1,0 +1,12 @@
+*.js
+*.tsx
+*.ts
+*.json
+*.png
+*.jpg
+*.webp
+*.ttf
+*.woff
+/node_modules/*
+/dist/*
+
