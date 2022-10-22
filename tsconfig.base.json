@@ -34,13 +34,9 @@
                     }
                 }
             }
-        ],
-        "baseUrl": ".",
-        "paths": {
-            "@/*": ["packages/*"]
-        }
+        ]
     },
-    "include": ["packages", "examples", "**/*.d.ts"],
+    "include": ["**/*.d.ts"],
     "exclude": ["node_modules"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }

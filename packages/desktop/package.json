@@ -1,0 +1,13 @@
+{
+    "name": "duck-desktop",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "cross-env NODE_ENV=development vite build --watch --config ./vite.config.ts --mode build",
+        "build": "cross-env NODE_ENV=production vite build --watch --mode build"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}

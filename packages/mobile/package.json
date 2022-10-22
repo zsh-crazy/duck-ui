@@ -1,0 +1,13 @@
+{
+    "name": "duck-mobile",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "cross-env NODE_ENV=development vite build --watch --config  ../../../../config/index.ts",
+        "build": "cross-env NODE_ENV=production vite build --watch --config ../../../../config/index.ts"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
